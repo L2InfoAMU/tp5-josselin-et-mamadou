@@ -2,6 +2,12 @@ package image;
 
 public class NotSupportedException extends RuntimeException {
 
-    public RuntimeException(String message);
+    public NotSupportedException(String message){
 
+    }
+
+    @Override
+    public String getMessage() {
+        return "Error";
+    }
 }

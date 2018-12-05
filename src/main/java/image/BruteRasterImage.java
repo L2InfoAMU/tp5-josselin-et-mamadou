@@ -8,7 +8,7 @@ public class BruteRasterImage implements Image {
     private Color[][] pixels;
 
     public BruteRasterImage(Color color, int width, int height){
-        Color[][]pixels = new Color[width][height];
+        pixels = new Color[width][height];
         for(int i = 0 ; i < height;i++)
             for (int j = 0; j < width; j++ )
                 pixels[j][i]= color;
@@ -16,7 +16,7 @@ public class BruteRasterImage implements Image {
 
 
     public BruteRasterImage(Color[][] colors){
-        Color[][]pixels = new Color[Matrices.getColumnCount(colors)][Matrices.getRowCount(colors)];
+        pixels = new Color[Matrices.getColumnCount(colors)][Matrices.getRowCount(colors)];
         for (int i = 0 ; i < Matrices.getRowCount(colors); i ++)
             for (int j = 0 ; j < Matrices.getColumnCount(colors); j++)
                 pixels[j][i]= colors[j][i];
