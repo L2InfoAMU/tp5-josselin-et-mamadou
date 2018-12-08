@@ -10,28 +10,34 @@ public class PaletteRasterImage implements Image{
 
 
     public PaletteRasterImage(Color color, int width, int height) {
-        indexesOfColors = new int[width][height];
-        palette = new ArrayList<>();
-        setPixelColor(color, 0, 0);
-        for(int i = 0 ; i < height;i++)
-            for (int j = 0; j < width; j++ )
-                indexesOfColors[j][i]= palette;
-
+        createRepresentation();
+        palette.add(color);
+        for(int i = 0 ; i < height;i++) {
+            for (int j = 0; j < width; j++)
+                indexesOfColors[j][i] = palette.indexOf(color);
+        }
     }
 
     public PaletteRasterImage(Color[][] pixels){
         createRepresentation();
-        for(int)
+
+        for(int i =0 ; i < pixels.length ; i++){
+            for(int j = 0 ; j < pixels[0].length ; j++)
+                if(!palette.contains(indexesOfColors[j][i]))
+                    palette.add(pixels[i][j]);
+        }
 
     }
 
     public void createRepresentation(){
-        Color[][] representation = new Color[getWidth()][getHeight()];
+        int[][] indexesOfColors = new int[getWidth()][getHeight()];
+        List<Color> palette = new ArrayList<>();
 
     }
 
     public void setPixelColor(Color color, int x, int y){
-        int indexeOfColorPalette = getIndexOfColor(color);
+        //int indexeOfColorPalette = getIndexOfColor(color);
+
     }
 
     private void getIndexOfColor(){
@@ -48,16 +54,25 @@ public class PaletteRasterImage implements Image{
 
     @Override
     public Color getPixelColor(int x, int y) {
-        return null;
+        return palette.get(indexesOfColors[x][y]);
     }
 
     @Override
     public int getWidth() {
-        return 0;
+        return indexesOfColors[0].length;
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return indexesOfColors.length;
+    }
+
+    protected void setWidth(int width){
+        this.indexesOfColors[getWidth()][getHeight()]= indexesOfColors[width][getHeight()];
+    }
+
+    protected void setHeight(int height){
+
+        this.indexesOfColors[getWidth()][getHeight()] = indexesOfColors[getWidth()][height];
     }
 }
