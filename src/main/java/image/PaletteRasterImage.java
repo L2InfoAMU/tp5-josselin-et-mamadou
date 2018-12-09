@@ -12,19 +12,20 @@ public class PaletteRasterImage implements Image{
     public PaletteRasterImage(Color color, int width, int height) {
         createRepresentation();
         palette.add(color);
-        for(int i = 0 ; i < height;i++) {
-            for (int j = 0; j < width; j++)
+        for(int i = 0 ; i < height ; i++) {
+            for (int j = 0 ; j < width ; j++)
                 indexesOfColors[j][i] = palette.indexOf(color);
         }
     }
 
     public PaletteRasterImage(Color[][] pixels){
         createRepresentation();
-
-        for(int i =0 ; i < pixels.length ; i++){
-            for(int j = 0 ; j < pixels[0].length ; j++)
-                if(!palette.contains(indexesOfColors[j][i]))
-                    palette.add(pixels[i][j]);
+        for(int i = 0 ; i < pixels.length ; i++){
+            for(int j = 0 ; j < pixels[0].length ; j++) {
+                if (!palette.contains(getPixelColor(j,i)))
+                    palette.add(pixels[j][i]);
+                indexesOfColors[j][i]=palette.indexOf(pixels[j][i]);
+            }
         }
 
     }
@@ -36,19 +37,29 @@ public class PaletteRasterImage implements Image{
     }
 
     public void setPixelColor(Color color, int x, int y){
-        //int indexeOfColorPalette = getIndexOfColor(color);
+        if(!palette.contains(color))
+            palette.add(color);
+        indexesOfColors[x][y] = palette.indexOf(color);
 
     }
 
-    private void getIndexOfColor(){
-        for(int index=0;index<)
-
+    public void setPixelsColor(Color [][] pixels){
+        for(int i = 0 ; i < pixels.length ; i++){
+            for(int j = 0 ; j < pixels[0].length ; j++) {
+                if (!palette.contains(pixels[j][i]))
+                    palette.add(pixels[j][i]);
+                indexesOfColors[j][i]=palette.indexOf(pixels[j][i]);
+            }
+        }
     }
 
     public void setPixelsColor(Color color){
-        for int x=0;x<getWidth
-
-                setPixelsColor
+        createRepresentation();
+        palette.add(color);
+        for(int i = 0 ; i < getHeight() ; i++) {
+            for (int j = 0 ; j < getWidth() ; j++)
+                indexesOfColors[j][i] = palette.indexOf(color);
+        }
     }
 
 
