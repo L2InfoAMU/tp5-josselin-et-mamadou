@@ -33,7 +33,6 @@ public class PaletteRasterImage implements Image{
     public void createRepresentation(){
         int[][] indexesOfColors = new int[getWidth()][getHeight()];
         List<Color> palette = new ArrayList<>();
-
     }
 
     public void setPixelColor(Color color, int x, int y){
