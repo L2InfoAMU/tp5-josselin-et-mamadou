@@ -1,7 +1,7 @@
 package image;
 
-public abstract class RasterImage {
+public abstract class RasterImage<E> {
 
-    private Type <T>;
+    private E ;
 
 }
