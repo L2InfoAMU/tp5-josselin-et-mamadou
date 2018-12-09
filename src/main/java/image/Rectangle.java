@@ -14,8 +14,8 @@ public class Rectangle implements Shape {
         yLeftCorner = y;
         this.width = width;
         this.height = height;
-        for(int i = 0 ; i < height ; i++) {
-            for (int j = 0; j < width; j++)
+        for(int i = y ; i < height ; i++) {
+            for (int j = x; j < width; j++)
                 rectangle[j][i] = color;
         }
     }
