@@ -5,33 +5,35 @@ import java.util.List;
 public class VectorImage implements Image {
 
     private List<Shape> shapes;
-
+    private Shape[][]image;
 
     public VectorImage (List<Shape> shapes, int width, int height){
         this.shapes = shapes;
-
+        for(int i = 0 ; i < height ; i++) {
+            for (int j = 0; j < width; j++)
+                image[j][i] = shapes.;
+        }
     }
 
     @Override
     public Color getPixelColor(int x, int y) {
-        return null;
+        return image[x][y].getColor();
     }
 
-    @Override
     public int getWidth() {
-        return 0;
+        return image.length;
     }
 
-    @Override
     public int getHeight() {
-        return 0;
+        return image[0].length ;
     }
 
-    protected int setWidth(int width){
+    protected void setWidth (int width){
+        this.image[getWidth()][getHeight()] = image[width][getHeight()];
 
     }
 
-    protected int setHeight(int height){
-
+    protected void setHeight(int height){
+        this.image[getWidth()][getHeight()] = image[getWidth()][height];
     }
 }
